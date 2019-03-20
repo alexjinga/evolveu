@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> DOM Exercise</title>
+	<link rel="stylesheet" type="text/css" href="dom.css">
+</head>
+<body>
+
+<!-- BASIC DOM -->
+	<div class="flexIt">
+		<div  id = "div1">
+			<h1>Basic DOM</h1>
+			<div id="itemList">
+				<p>This is a list of stuff</p>
+				<ol id = "orderList"> 
+					<li>111</li>
+					<li>222</li>
+					<li>333</li>
+					<li>4444</li>
+					<li>555</li>
+				</ol>
+			</div>		
+			<font>
+				<input id="newElement" type="text" name="" placeholder="Enter a new item"><br>
+				<button id="showElem" func="show" type="button">Show/Hide</button>
+				<button id="addElem" func="add" type="button">Add Item</button>
+				<button id="clearList" func="clear" type="button">Delete Item</button>
+				<br><br>
+				<div id="display"></div>
+			</font>
+		</div>
+	</div>
+
+<!-- WORKING WITH CARDS -->
+	<h1>Working with Cards</h1>
+		<div class = "flexIt2">
+			<div id = "leftSide" >
+				<button id="addCard" func="newCard" type="button" value="Add Card">Add Card</button>
+				<div id="card">
+					
+				</div>
+			</div>
+			<div id = "rightSide">
+				Right
+			</div>
+		</div>
+
+	<script type="text/javascript" src="dom_v2.js"></script>
+</body>
+</html>

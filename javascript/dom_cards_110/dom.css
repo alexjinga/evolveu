@@ -1,0 +1,56 @@
+/*BASIC DOM code*/
+body {text-align: center;}
+
+.flexIt {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#div1 {
+/*	width: 300px;*/
+	padding: 20px;
+	border: 1px solid black; 
+	margin: 30px;
+}
+
+#itemList {
+	text-align: left;
+}
+
+#newElement {
+	margin: 5px;
+}
+
+/*WORKING WITH CARDS code*/
+
+.flexIt2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#leftSide {
+	/*width: 450px;*/
+	padding: 20px;
+	border: 1px solid black; 
+	margin: 5px;
+
+}
+
+#rightSide {
+	/*width: 450px;*/
+	padding: 20px;
+	border: 1px solid black; 
+	margin: 5px;
+}
+
+.bttn {
+	margin: 5px;
+}
+
+.cards {
+	padding: 10px;
+	border: 1px solid gray;
+	margin: 10px;
+}

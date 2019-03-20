@@ -1,0 +1,37 @@
+.mainPage {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+}
+
+#mainPage {
+	/*width: 450px;*/
+	padding: 20px;
+	/*border: 1px solid black; */
+	margin: 5px;
+	font-size: 25px;
+	
+}
+
+.cards {
+	padding: 10px;
+	border: 1px solid gray;
+	margin: 10px;
+	jutify-content:center;
+	border-radius: 5px
+	
+}
+
+.cards:hover {
+	background-color: #eaecef
+}
+
+.center {
+	text-aliign: center;
+}
+
+.btn-outline-danger{
+	margin-top: 20px;
+	margin-button: 5px
+}
