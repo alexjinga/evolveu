@@ -7,40 +7,33 @@ class AcountComp extends React.Component {
 		this.state = {
 			accountNameState: this.props.accountName, 
 			accountBalanceState: this.props.accountBalance,
+			newAmount: ""
 		}
 		this.account = new Account(this.state.accountNameState, this.state.accountBalanceState)
-		console.log(this.account.deposit)
 	}
 
+	depositController = () => {
+			this.account.deposit(Number(this.state.newAmount))
+			this.setState({ accountBalanceState: this.account.showBalance()})
+			this.setState({newAmount: ""})
+		}
 
+	withdrawlController = () => {
+			this.account.withdrawl(Number(this.state.newAmount))
+			this.setState({accountBalanceState: this.account.showBalance()})
+			this.setState({newAmount: ""})
+		}
 
 	handleDeposit = event => { 
-	// 	this.setState({ newAmmountValueState: event.target.value})
-	// 	console.log ("new amount= ", this.state.newAmmountValueState)
-	// 	console.log ("balance= ", this.state.totalAmountValueState)
+		this.setState({newAmount: event.target.value})
+		console.log ("handle deposit func=",this.state.newAmount)
 	};
-
-
-	// handleChangeBox2 = event => {
-	// 	this.setState({ box2ValueState: event.target.value})
-	// 	console.log (this.state.box2ValueState)
-	// }
-
-
-	handleClick = (e) => {
-		{ e === '+' && console.log ("deposit")}
-		{ e === '-' && console.log ("withdrawl")}
-		{ e === 's' && console.log (Number(this.state.accountBalanceState))}
-		// { e === '+' && this.setState({ totalAmountValueState: oper.deposit(Number(this.state.newAmountValueState),Number(this.state.totalAmountValueState))}) }
-		// { e === '-' && this.setState({ totalAmountValueState: oper.withdrawl(Number(this.state.totalAmountValueState),Number(this.state.newAmountValueState))}) }
-		// { e === 's' && this.setState({ resultValueState: oper.multiply(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) }
-	}
 
 
 	render(){
 		return (
 			<div>	
-				<h2> Hello From Account Component </h2>
+				{/*<h2> Hello From Account Component </h2>*/}
 				<input className="noBorderInput"
 					type = "text"
 					value = {this.state.accountNameState + ": $"+ this.state.accountBalanceState}
@@ -49,11 +42,12 @@ class AcountComp extends React.Component {
 				<input
 					type = "number"
 					placeholder ="Enter New Ammount"
-					
+					value = {this.state.newAmount}
+					onChange = {this.handleDeposit}
 				/>
 				<br />
-				<button className="bn" onClick = {() => this.handleClick("+")}>Deposit</button>
-				<button className="bn" onClick = {() => this.handleClick("-")}>Withdrawl</button>
+				<button className="bn" onClick = {this.depositController}>Deposit</button>
+				<button className="bn" onClick = {this.withdrawlController}>Withdrawl</button>
 				<br />
 				<br />
 			</div>

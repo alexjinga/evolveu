@@ -6,6 +6,7 @@ class Account {
 		}
 	
 	deposit (amount) {
+		// console.log(amount)
 		this.balance = this.balance + parseInt(amount)
 	}
 
@@ -14,6 +15,7 @@ class Account {
 	}
 
 	showBalance(){
+		console.log(this.balance)
 		return(this.balance)
 	}
 }
