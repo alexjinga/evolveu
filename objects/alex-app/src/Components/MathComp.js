@@ -26,11 +26,11 @@ class MathComp extends React.Component {
 
 
 	handleClick = (e) => {
-		const oper = new Calc
-		{ e === '+' && this.setState({ resultValueState: oper.sum(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) }
-		{ e === '-' && this.setState({ resultValueState: oper.substruct(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) }
-		{ e === 'x' && this.setState({ resultValueState: oper.multiply(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) }
-		{ e === '/' && this.setState({ resultValueState: oper.divide(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) }
+		const oper = new Calc()
+		e === '+' && this.setState({ resultValueState: oper.sum(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) 
+		e === '-' && this.setState({ resultValueState: oper.substruct(Number(this.state.box1ValueState),Number(this.state.box2ValueState))})
+		e === 'x' && this.setState({ resultValueState: oper.multiply(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) 
+		e === '/' && this.setState({ resultValueState: oper.divide(Number(this.state.box1ValueState),Number(this.state.box2ValueState))}) 
 	}
 
 

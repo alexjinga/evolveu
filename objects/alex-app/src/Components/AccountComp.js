@@ -1,5 +1,6 @@
 import React from 'react'
 import Account from './Account.js'
+import AccountsComp from "./AccountsComp.js"
 
 class AcountComp extends React.Component {
 	constructor(props){
@@ -26,6 +27,7 @@ class AcountComp extends React.Component {
 
 	handleDeposit = event => { 
 		this.setState({newAmount: event.target.value})
+
 		console.log ("handle deposit func=",this.state.newAmount)
 	};
 
@@ -58,4 +60,3 @@ class AcountComp extends React.Component {
 
 export default AcountComp
 
-/*value = {this.state.newAmountValueState}*/
