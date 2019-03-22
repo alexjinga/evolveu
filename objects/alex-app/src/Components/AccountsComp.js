@@ -26,8 +26,15 @@ class AcountsComp extends React.Component {
 		const arr = this.state.arrayData
 		console.log ("showData state array=", arr)
 		arr.forEach ((item) => {
-			accountList.push(<AccountComp accountName={item.name} accountBalance={item.balance} funcDelete={this.handleDelete} item={item}/>)
+			accountList.push(
+				<AccountComp accountName={item.name} 
+				accountBalance={item.balance} 
+				funcDelete={this.handleDelete} 
+				item={item}
+				key = {item.name}
+			/>)
 		})
+		console.log(accountList)
 		return accountList
 	}
 
@@ -47,7 +54,7 @@ class AcountsComp extends React.Component {
 	handleDelete = (item) => {
  		console.log ("array item to delete=", item)
  		let arr = this.state.arrayData
- 		let result = arr.filter(arr => arr != item)
+ 		let result = arr.filter(arr => arr !== item)
  		console.log ("result =", result)
  		this.setState({arrayData: result})
  		console.log("state array= ",this.state.arrayData)
@@ -61,15 +68,15 @@ class AcountsComp extends React.Component {
 				<h2> Hello From Accounts Component </h2>
 					<input className="noBorderInput"
 					type = "text"
-					value = {"Total" + ": $" + this.state.totalMoney}
+					value = {"Total: $" + this.state.totalMoney}
 					/>
 					<input className="noBorderInput"
 					type = "text"
-					value = {"Highest" + ": $"+ this.state.highestAccount.balance}
+					value = {"Highest: $"+ this.state.highestAccount.balance}
 					/>
 					<input className="noBorderInput"
 					type = "text"
-					value = {"lowest" + ": $"+ this.state.lowestAccount.balance}
+					value = {"lowest: $"+ this.state.lowestAccount.balance}
 					/>
 					<br />
 					<br />

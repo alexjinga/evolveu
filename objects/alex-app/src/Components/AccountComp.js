@@ -1,6 +1,6 @@
 import React from 'react'
 import Account from './Account.js'
-import AccountsComp from "./AccountsComp.js"
+// import AccountsComp from "./AccountsComp.js"
 
 class AcountComp extends React.Component {
 	constructor(props){
