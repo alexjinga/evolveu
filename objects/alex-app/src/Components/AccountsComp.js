@@ -17,9 +17,9 @@ class AcountsComp extends React.Component {
 		this.ac = new Account
 	}
 
-	// componentDidMount(){
- //    	this.accountStatusBar();
- //  	}
+	componentDidMount(){
+   		this.accountStatusBar();
+ 	}
 
 	showData = () => {
 		let accountList = []
@@ -39,7 +39,8 @@ class AcountsComp extends React.Component {
 	}
 
 	handelNewAccount = () => {
-		console.log ("inside the new account func")
+		this.accountStatusBar()
+		console.log(this.state.arrayData)
 	}
 
 	render(){
@@ -61,7 +62,7 @@ class AcountsComp extends React.Component {
 					<br />
 					<br />
 				<div> 
-					<button className="bn" onClick = {this.accountStatusBar}>New Account</button>
+					<button className="bn" onClick = {this.handelNewAccount}>New Account</button>
 				</div>	
 				<div>
 					{this.showData()}

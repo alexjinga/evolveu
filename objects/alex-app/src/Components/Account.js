@@ -16,7 +16,7 @@ class Account {
 	}
 
 	showBalance(){
-		// console.log(""this.balance)
+		console.log(" balance from Account.js showBalance= ", this.balance)
 		return(this.balance)
 	}
 
