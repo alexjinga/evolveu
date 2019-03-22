@@ -9,10 +9,6 @@ class AcountsComp extends React.Component {
 		super(props)
 		this.state = {
 			arrayData: myData,
-			// statusBar: [0, 0, 0],
-			lowestAccount: "",
-			highestAccount: "",
-			totalMoney: "",
 		}
 		this.ac = new Account()
 	}
@@ -24,7 +20,7 @@ class AcountsComp extends React.Component {
  	showData = () => {
 		let accountList = []
 		const arr = this.state.arrayData
-		console.log ("showData state array=", arr)
+										console.log ("showData state array=", arr)
 		arr.forEach ((item) => {
 			accountList.push(
 				<AccountComp accountName={item.name} 
@@ -34,31 +30,59 @@ class AcountsComp extends React.Component {
 				key = {item.name}
 			/>)
 		})
-		console.log(accountList)
+										console.log(accountList)
 		return accountList
 	}
 
  	accountStatusBar = () => {
-			const arr = this.state.arrayData
-			this.setState({totalMoney: this.ac.totalAccounts(arr)})
-			this.setState({lowestAccount: this.ac.smallestAccount(arr)})
-			this.setState({highestAccount: this.ac.biggestAccount(arr)})
+		const arr = this.state.arrayData
+		let higher = arr[0]
+		let lower = arr[0]
+		let total = 0
+
+		arr.forEach((item) => {
+			total = total + Number(item.balance)
+		 	lower = (Number(lower.balance) >= Number(item.balance)) ? item : lower
+		 	higher = (Number(higher.balance) <= Number(item.balance)) ? item : higher
+		 								console.log(item)
+
+		 })
+										console.log(higher)
+		return(
+			<div>
+				<input className="noBorderInput"
+					type = "text"
+					value = {"Total: $" + total}
+				/>
+				<input className="noBorderInput"
+					type = "text"
+					value = {"Highest: $"+ higher.balance}
+				/>
+				<input className="noBorderInput"
+					type = "text"
+					value = {"Lowest: $"+ lower.balance}
+				/>
+				<br />
+				<br />
+			</div>	
+		)
+			
 			
 	}
 
 	handelNewAccount = () => {
 		this.accountStatusBar()
-		console.log(this.state.arrayData)
+										console.log(this.state.arrayData)
 	}
 
 	handleDelete = (item) => {
- 		console.log ("array item to delete=", item)
+ 										console.log ("array item to delete=", item)
  		let arr = this.state.arrayData
  		let result = arr.filter(arr => arr !== item)
- 		console.log ("result =", result)
+ 										console.log ("result =", result)
  		this.setState({arrayData: result})
- 		console.log("state array= ",this.state.arrayData)
- 		this.accountStatusBar()
+ 										console.log("state array= ",this.state.arrayData)
+ 		// this.accountStatusBar()
  		// this.showData()
  	}
 
@@ -66,20 +90,7 @@ class AcountsComp extends React.Component {
 		return (
 			<div>
 				<h2> Hello From Accounts Component </h2>
-					<input className="noBorderInput"
-					type = "text"
-					value = {"Total: $" + this.state.totalMoney}
-					/>
-					<input className="noBorderInput"
-					type = "text"
-					value = {"Highest: $"+ this.state.highestAccount.balance}
-					/>
-					<input className="noBorderInput"
-					type = "text"
-					value = {"lowest: $"+ this.state.lowestAccount.balance}
-					/>
-					<br />
-					<br />
+					{this.accountStatusBar()}
 				<div> 
 					<button className="bn" onClick = {this.handelNewAccount}>New Account</button>
 				</div>	
