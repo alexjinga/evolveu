@@ -37,7 +37,7 @@ class Account {
 	biggestAccount (accountArray) {
 		let highest = accountArray[0]
 		accountArray.forEach((item) => {
-			highest = (Number(highest.balance) <= Number(item.balance)) ?item : highest 
+			highest = (Number(highest.balance) <= Number(item.balance)) ? item : highest 
 		})
 		return highest
 	}

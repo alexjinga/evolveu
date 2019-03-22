@@ -14,23 +14,24 @@ class AcountsComp extends React.Component {
 			highestAccount: "",
 			totalMoney: "",
 		}
-		this.ac = new Account
+		this.ac = new Account()
 	}
 
 	componentDidMount(){
    		this.accountStatusBar();
  	}
 
-	showData = () => {
+ 	showData = () => {
 		let accountList = []
 		const arr = this.state.arrayData
+		console.log ("showData state array=", arr)
 		arr.forEach ((item) => {
-			accountList.push(<AccountComp accountName={item.name} accountBalance={item.balance} />)
+			accountList.push(<AccountComp accountName={item.name} accountBalance={item.balance} funcDelete={this.handleDelete} item={item}/>)
 		})
 		return accountList
 	}
 
-	accountStatusBar = () => {
+ 	accountStatusBar = () => {
 			const arr = this.state.arrayData
 			this.setState({totalMoney: this.ac.totalAccounts(arr)})
 			this.setState({lowestAccount: this.ac.smallestAccount(arr)})
@@ -42,6 +43,17 @@ class AcountsComp extends React.Component {
 		this.accountStatusBar()
 		console.log(this.state.arrayData)
 	}
+
+	handleDelete = (item) => {
+ 		console.log ("array item to delete=", item)
+ 		let arr = this.state.arrayData
+ 		let result = arr.filter(arr => arr != item)
+ 		console.log ("result =", result)
+ 		this.setState({arrayData: result})
+ 		console.log("state array= ",this.state.arrayData)
+ 		this.accountStatusBar()
+ 		// this.showData()
+ 	}
 
 	render(){
 		return (

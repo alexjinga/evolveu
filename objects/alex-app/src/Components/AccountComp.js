@@ -50,6 +50,7 @@ class AcountComp extends React.Component {
 				<br />
 				<button className="bn" onClick = {this.depositController}>Deposit</button>
 				<button className="bn" onClick = {this.withdrawlController}>Withdrawl</button>
+				<button className="bn" onClick = {() => {this.props.funcDelete(this.props.item)}}>Delete</button>
 				<br />
 				<br />
 			</div>
