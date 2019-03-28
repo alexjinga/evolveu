@@ -45,34 +45,30 @@ class AcountsComp extends React.Component {
 		 	lower = (Number(lower.balance) >= Number(item.balance)) ? item : lower
 		 	higher = (Number(higher.balance) <= Number(item.balance)) ? item : higher
 		 								console.log(item)
-
 		 })
 										console.log(higher)
 		return(
 			<div>
 				<input className="noBorderInput"
 					type = "text"
-					value = {"Total: $" + total}
+					value = {"TOTAL: $" + total}
 				/>
 				<input className="noBorderInput"
 					type = "text"
-					value = {"Highest: $"+ higher.balance}
+					value = {"HIGHEST: "+higher.name +" - $"+ higher.balance}
 				/>
 				<input className="noBorderInput"
 					type = "text"
-					value = {"Lowest: $"+ lower.balance}
+					value = {"LOWEST: "+lower.name +" - $"+ lower.balance}
 				/>
 				<br />
 				<br />
 			</div>	
 		)
-			
-			
 	}
 
 	handelNewAccount = () => {
-		this.accountStatusBar()
-										console.log(this.state.arrayData)
+										console.log("add account func")
 	}
 
 	handleDelete = (item) => {
@@ -82,8 +78,6 @@ class AcountsComp extends React.Component {
  										console.log ("result =", result)
  		this.setState({arrayData: result})
  										console.log("state array= ",this.state.arrayData)
- 		// this.accountStatusBar()
- 		// this.showData()
  	}
 
 	render(){
@@ -96,7 +90,6 @@ class AcountsComp extends React.Component {
 				</div>	
 				<div>
 					{this.showData()}
-
 				</div>
 			</div>
 		)
