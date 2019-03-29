@@ -1,38 +1,32 @@
-class City {
+class city {
 
-    constructor(name, latitude, longitude, population) {
-        this.name = name;
-        this.latitude = parseInt(latitude);
-        this.longitude = parseInt(longitude);
-        this.population = parseInt(population);
-    }
+	constructor (name, latitude, longitude, population){
+		this.name = name;
+		this.latitude = parseInt(latitude);
+		this.longitude = parseInt(longitude);
+		this.population = parseInt(population);
+	}
 
-    show() {
-        const result = JSON.stringify(this);
-        return result
-    }
+	movedIn (num) {
+		this.population += num
+	}
 
-    movedIn(people) {
-        this.population += people
-    }
+	movedOut (num) {
+		this.population -= parseInt(num)
+	}
 
-    movedOut(people) {
-        this.population -= people
-    }
-
-    howBig(population) {
-        const x = population
+	howBig(num) {
         switch (true) {
-            case (x < 100):
+            case (num < 100):
                 return "Hamlet";
                 break;
-            case (x < 1000):
+            case (num < 1000):
                 return "Village";
                 break;
-            case (x < 20000):
+            case (num < 20000):
                 return "Town";
                 break;
-            case (x < 100000):
+            case (num < 100000):
                 return "Large Town";
                 break;
             default:
@@ -41,6 +35,11 @@ class City {
         }
     }
 
+
+	show () {
+		const display =JSON.stringify(this)
+		return JSON.stringify(this)
+	}
 }
 
-export default City
+export default city

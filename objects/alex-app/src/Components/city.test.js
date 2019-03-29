@@ -1,7 +1,7 @@
-import City from "./City.js";
+import city from "./city.js";
 
 test("testing City class & methods: ", () => {
-	const obj = new City("Managuador", 245, 135, 2000000);
+	const obj = new city("Managuador", 245, 135, 2000000);
 	expect(obj.name).toBe("Managuador");
 	expect(obj.latitude).toBe(245);
 	expect(obj.longitude).toBe(135);
