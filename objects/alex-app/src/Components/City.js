@@ -2,8 +2,8 @@ class city {
 
 	constructor (name, latitude, longitude, population){
 		this.name = name;
-		this.latitude = parseInt(latitude);
-		this.longitude = parseInt(longitude);
+		this.latitude = latitude;
+		this.longitude = longitude;
 		this.population = parseInt(population);
 	}
 

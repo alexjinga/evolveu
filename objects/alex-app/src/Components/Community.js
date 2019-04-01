@@ -1,6 +1,7 @@
 import defaultCityData from "./cityList.json";
+import city from "./city.js"
 
-class CityController {
+class Community {
 	constructor(myData = defaultCityData) {
 		this.cityData = myData;
 	}
@@ -37,4 +38,4 @@ class CityController {
 	}
 }
 
-export default CityController;
+export default Community;

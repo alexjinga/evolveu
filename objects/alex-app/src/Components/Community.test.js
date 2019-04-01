@@ -1,4 +1,4 @@
-import CityController from "./CityController.js";
+import Community from "./Community.js";
 
 const testCities =[
 	{
@@ -30,9 +30,9 @@ const testCities =[
 	]
 	
 
-test("testing CityController class & methods: ", () => {
+test("testing Community class & methods: ", () => {
 
-	const obj = new CityController(testCities);
+	const obj = new Community(testCities);
 	expect(obj.cityData[1].name).toBe("Managuador");
 	expect(obj.whichSphere(obj.cityData[1])).toBe("Southern Hemisphere");
 	expect(obj.getMostNorthern()).toBe("Pelotillehue");
