@@ -1,5 +1,5 @@
 import defaultCityData from "./cityList.json";
-import city from "./city.js"
+
 
 class Community {
 	constructor(myData = defaultCityData) {
@@ -15,7 +15,7 @@ class Community {
 	getMostNorthern() {
 		const t2 = this.cityData.filter(function(element) {
 			const last = element.latitude.length - 1;
-			return element.latitude[last] == "N";
+			return element.latitude[last] === "N";
 		});
 		t2.sort((a, b) => (a.latitude > b.latitude ? 1 : -1));
 		return t2[0].name;
@@ -24,7 +24,7 @@ class Community {
 	getMostSouthern() {
 				const t2 = this.cityData.filter(function(element) {
 			const last = element.latitude.length - 1;
-			return element.latitude[last] == "S";
+			return element.latitude[last] === "S";
 		});
 		t2.sort((a, b) => (a.latitude > b.latitude ? 1 : -1));
 		return t2[0].name;
