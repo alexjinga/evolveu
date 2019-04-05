@@ -23,4 +23,11 @@ test("testing City class & methods: ", () => {
 	expect(obj.howBig(obj.population)).toBe("Large Town");
 	obj.movedIn(200000);
 	expect(obj.howBig(obj.population)).toBe("City");
+	const myCity = new city ("Constanta", 245, 135, 350000)
+	let myFav = myCity
+	expect(myCity.population).toBe(350000)
+	expect(myFav.population).toBe(350000)
+	myCity.movedIn(100)
+	myFav.movedIn(200)
+	expect(myCity.population).toBe(350300)
 });
