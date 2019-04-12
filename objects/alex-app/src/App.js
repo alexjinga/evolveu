@@ -43,7 +43,7 @@ class App extends Component {
 
           {this.state.viewState === 'Math' && <MathComp />}
           {this.state.viewState === 'Phts' && <PhotoPage />}
-          {this.state.viewState === 'account' && <AccountComp accountName="Checking Account" accountBalance="25" />}
+          {this.state.viewState === 'account' && <AccountComp id = "0" accountName="Checking Account" accountBalance="25" />}
           {this.state.viewState === 'accounts' && <AccountsComp />}
           {this.state.viewState === 'cities' && <CitiesComp />}
 

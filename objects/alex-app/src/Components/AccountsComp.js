@@ -1,100 +1,271 @@
-import React from 'react'
-import Account from './Account.js'
-import AccountComp from "./AccountComp.js"
-import myData from './AccountList.json'
+import React from 'react';
+import Accounts from './Accounts'
+import './AccountsComp.css';
 
-class AcountsComp extends React.Component {
+class AccountsComp extends React.Component{
+    constructor() {
+        super()
+        this.state = {
+            view: "",
+            accountsArray: new Accounts()
+        }
+         const modifyObj = []
+    }
+    
+    depositController= (id, balance) => {
+        const arr = this.state.accountsArray
+        arr.deposit(id, balance)
+        this.setState({accountsArray: arr})
+       
+    } 
 
-	constructor(props){
-		super(props)
-		this.state = {
-			arrayData: myData,
-		}
-		this.ac = new Account()
-	}
+    withdrawController= (id, balance) => {
+        const arr = this.state.accountsArray
+        arr.withdraw(id, balance)
+        this.setState({accountsArray: arr})
+    } 
 
-	componentDidMount(){
-   		this.accountStatusBar();
- 	}
+    modifyController= (id, name, balance) => {
+        this.modifyObj = [id, name, balance]
+        this.setState({view:"modify"})
+    } 
 
- 	showData = () => {
-		let accountList = []
-		const arr = this.state.arrayData
-										console.log ("showData state array=", arr)
-		arr.forEach ((item) => {
-			accountList.push(
-				<AccountComp accountName={item.name} 
-				accountBalance={item.balance} 
-				funcDelete={this.handleDelete} 
-				item={item}
-				key = {item.name}
-			/>)
-		})
-										console.log(accountList)
-		return accountList
-	}
 
- 	accountStatusBar = () => {
-		const arr = this.state.arrayData
-		let higher = arr[0]
-		let lower = arr[0]
-		let total = 0
+    deleteController = (id) => {
+        console.log ("delete",id)
+        this.setState({accountArray: this.state.accountsArray.removeAccount(id)})
+        console.log ("state array=", this.state.accountsArray)
 
-		arr.forEach((item) => {
-			total = total + Number(item.balance)
-		 	lower = (Number(lower.balance) >= Number(item.balance)) ? item : lower
-		 	higher = (Number(higher.balance) <= Number(item.balance)) ? item : higher
-		 								console.log(item)
-		 })
-										console.log(higher)
-		return(
-			<div>
-				<input className="noBorderInput"
-					type = "text"
-					value = {"TOTAL: $" + total}
-				/>
-				<input className="noBorderInput"
-					type = "text"
-					value = {"HIGHEST: "+higher.name +" - $"+ higher.balance}
-				/>
-				<input className="noBorderInput"
-					type = "text"
-					value = {"LOWEST: "+lower.name +" - $"+ lower.balance}
-				/>
-				<br />
-				<br />
-			</div>	
-		)
-	}
+    }
 
-	handelNewAccount = () => {
-										console.log("add account func")
-	}
+     handleAmmountChange = event => { 
+        this.setState({newAmount: event.target.value})
+        console.log ("handle deposit func=",this.state.newAmount)
+        console.log (event.target.id)
+    }
+ 
+    showData = () => {
+        let accListComp = []
+        const arr = this.state.accountsArray.accountList
+        arr.forEach ((item) => {
+            accListComp.push(
+                <div className="flexIt2" key={item.id} id="endLine">   
+                        <div id="sides">
+                            <input className="noBorderInput"
+                                type = "text"
+                                value = {"Name: "+ item.accName}
+                            />
+                            <input className="noBorderInput"
+                                type = "text"
+                                value = {"Balance: $"+ item.accBalance}
+                            />
+                        </div>
+                       
+                        <div id="sides">
+                            <button id="addbtn" className="bn" onClick = {() => {this.modifyController(item.id, item.accName, item.accBalance)}}>Modify</button>
+                            <button id="addbtn" className="bn" onClick = {() => {this.deleteController(item.id)}}>Delete</button>
+                        </div>
+                    
+                </div>
+            )
+        })
+        return accListComp
+    }
 
-	handleDelete = (item) => {
- 										console.log ("array item to delete=", item)
- 		let arr = this.state.arrayData
- 		let result = arr.filter(arr => arr !== item)
- 										console.log ("result =", result)
- 		this.setState({arrayData: result})
- 										console.log("state array= ",this.state.arrayData)
- 	}
+    accountStatusBar = () => {
+        return(
+            <div>
+                <input className="noBorderInput"
+                    type = "text"
+                    value = {"TOTAL: $" + this.state.accountsArray.getAccountsTotal()}
+                />
+                <br />
+                <input className="noBorderInput"
+                    type = "text"
+                    value = {"HIGHEST: "+this.state.accountsArray.getHighestAccount().accName 
+                                +" - $"+ this.state.accountsArray.getHighestAccount().accBalance}
+                />
+                <input className="noBorderInput"
+                    type = "text"
+                    value = {"LOWEST: "+this.state.accountsArray.getLowestAccount().accName 
+                                +" - $"+ this.state.accountsArray.getLowestAccount().accBalance}
+                />
+                <br />
+                <br />
+            </div>  
+        )
+    }
 
-	render(){
-		return (
-			<div>
-				<h2> Hello From Accounts Component </h2>
-					{this.accountStatusBar()}
-				<div> 
-					<button className="bn" onClick = {this.handelNewAccount}>New Account</button>
-				</div>	
-				<div>
-					{this.showData()}
-				</div>
-			</div>
-		)
-	}
+    addNewAccount = (name, balance) => {
+        const arr = this.state.accountsArray
+        arr.addAccount(name, balance)
+        this.setState({accountsArray: arr})
+    }
 
+    submitOnClick = (name, balance) => {
+        console.log("from submit", name)
+        if (name === undefined) {
+            console.log("empty")
+        } else { 
+            if (balance === undefined || balance === NaN){
+                this.addNewAccount (name, 0)
+            } else {
+                this.addNewAccount(name,balance)
+            }
+        }
+        this.setState({view:""})
+    }
+
+    displayTitle = (type) => {
+        if (type === "new") {
+            return (<h4> Open New Account </h4>)
+        } else {
+            return (
+                <div>
+                    <h4> Account Transactions</h4>
+                </div>
+            )
+        }
+    } 
+
+    displayInputs = (type) => {
+        let inputPlaceHolderName =""
+        let inputPlaceHolderBalance =""
+        let inputValueName=""
+
+        if (type === "new") {
+            inputPlaceHolderName = "Enter New Account Name"
+            inputPlaceHolderBalance ="Enter Initial Balance"
+
+        } else {
+           inputPlaceHolderName = this.modifyObj[1] + " Account"
+           inputPlaceHolderBalance ="$ 0"
+        }
+
+        return (
+                <div>
+                    <input  type = "text"
+                        placeholder ={inputPlaceHolderName}
+                        value = {this.name}
+                        onChange = {
+                            (event)=>{
+                                this.name = event.target.value
+                                console.log(this.name)
+                            }
+                        }
+                    />
+                    <input  type = "number"
+                        placeholder = {inputPlaceHolderBalance}
+                        value = {this.balance}
+                        onChange = {
+                            (event)=>{
+                                this.balance = event.target.value
+                                console.log(this.balance)
+                            }
+                        }
+                     />
+                </div>
+            )
+    }
+
+    displayButtons = (type) => {
+        if (type === "new") {
+            return (
+                <div>
+                    <button id="addbtn" onClick= {
+                        () => {
+                            this.submitOnClick(this.name, this.balance)
+                            this.name=undefined
+                            this.balance=undefined
+                        }
+                    }>close</button>
+                    <button id="addbtn" onClick= {
+                        () => {
+                            this.setState({view:""})
+                            this.name=undefined
+                            this.balance=undefined
+                        }
+                    }>close</button>
+                </div>
+            )
+
+        } else {
+            return (
+                <div>
+                    <button id="addbtn" onClick= {
+                        () => {
+                            if (this.balance === undefined || this.balance === NaN){
+                                this.balance=0
+                            }
+                            this.depositController(this.modifyObj[0], this.balance)
+                            this.name=undefined
+                            this.balance=undefined
+                            this.setState({view:""})
+                        }
+                    }>Deposit</button>
+
+                    <button id="addbtn" onClick= {
+                        () => {
+                            if (this.balance === undefined || this.balance === NaN){
+                                this.balance=0
+                            }
+                            this.withdrawController(this.modifyObj[0], this.balance)
+                            this.name=undefined
+                            this.balance=undefined
+                            this.setState({view:""})
+                        }
+                    }>Withdrawl</button>
+                    <button id="addbtn" onClick= {
+                        () => {
+                            this.setState({view:""})
+                            this.name=undefined
+                            this.balance=undefined
+                        }
+                    }>Cancel</button>
+                </div>
+            )
+        }
+    }
+
+    conditionalDisplay = (type) => {
+        return(
+            <div>
+                <div>
+                    {this.displayTitle(type)}
+                    {this.displayInputs(type)}
+                    {this.displayButtons(type)}
+
+                </div>
+
+                
+            </div>
+        )
+    }
+
+    render() {
+        return(
+            <div>
+                <div className="accountCard">
+                    {this.accountStatusBar()}
+                </div>
+                <div className = "flexIt2" >
+                    <div id = "leftSide" >
+                        <div id="endLine">
+                            <button 
+                                id="addbtn"
+                                onClick = {() => {this.setState({view:"add"})} } 
+                            >Add Account</button>
+                        </div>
+                       {this.showData()}
+                    </div>
+                    <div id = "rightSide">
+                        {this.state.view === 'add' && this.conditionalDisplay("new")}
+                        {this.state.view === 'modify' && this.conditionalDisplay("modify")}
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
-export default AcountsComp
+export default AccountsComp

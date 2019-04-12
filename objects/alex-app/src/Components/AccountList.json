@@ -1,22 +1,22 @@
 [
 	{
-		"name": "Moe",
+		"name": "Checking",
 		"balance": "222"
 	},
 	{
-		"name": "Larry",
+		"name": "Savings",
 		"balance": "334"
 	},
 	{
-		"name": "Curley",
+		"name": "TFSA",
 		"balance": "900"
 	},
 	{
-		"name": "Shemp",
+		"name": "Margin",
 		"balance": "60"
 	},
 	{
-		"name": "Joe",
+		"name": "Credit",
 		"balance": "2000"
 	}
 ]

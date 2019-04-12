@@ -1,25 +1,22 @@
 class Account {
-
-	constructor(accountName, startingBalance){
-		this.name = accountName;
-		this.balance = parseInt(startingBalance);
-		// this.total = 0;
-		}
-	
-	deposit (amount) {
-		// console.log(amount)
-		this.balance = this.balance + parseInt(amount)
+	constructor(id, accName, accBalance) {
+		this.id = id;
+		this.accName = accName;
+		this.accBalance = accBalance;
+		this.amountChange = "";
 	}
 
-	withdrawl (amount) {
-		this.balance = this.balance - parseInt(amount)
+	deposit(amount) {
+		this.accBalance = parseInt(this.accBalance) + parseInt(amount);
 	}
 
-	showBalance(){
-		console.log(" balance from Account.js showBalance= ", this.balance)
-		return(this.balance)
+	withdraw(amount) {
+		this.accBalance = parseInt(this.accBalance) - parseInt(amount);
 	}
 
+	getBalance() {
+		return this.accBalance;
+	}
 }
 
-export default Account
+export default Account;

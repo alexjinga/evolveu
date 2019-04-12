@@ -10,18 +10,18 @@ class AcountComp extends React.Component {
 			accountBalanceState: this.props.accountBalance,
 			newAmount: ""
 		}
-		this.account = new Account(this.state.accountNameState, this.state.accountBalanceState)
+		this.account = new Account(0 ,this.state.accountNameState, this.state.accountBalanceState)
 	}
 
 	depositController = () => {
 			this.account.deposit(Number(this.state.newAmount))
-			this.setState({ accountBalanceState: this.account.showBalance()})
+			this.setState({ accountBalanceState: this.account.getBalance()})
 			this.setState({newAmount: ""})
 		}
 
 	withdrawlController = () => {
-			this.account.withdrawl(Number(this.state.newAmount))
-			this.setState({accountBalanceState: this.account.showBalance()})
+			this.account.withdraw(Number(this.state.newAmount))
+			this.setState({accountBalanceState: this.account.getBalance()})
 			this.setState({newAmount: ""})
 		}
 
@@ -50,7 +50,7 @@ class AcountComp extends React.Component {
 				<br />
 				<button className="bn" onClick = {this.depositController}>Deposit</button>
 				<button className="bn" onClick = {this.withdrawlController}>Withdrawl</button>
-				<button className="bn" onClick = {() => {this.props.funcDelete(this.props.item)}}>Delete</button>
+				{/*<button className="bn" onClick = {() => {this.props.funcDelete(this.props.item)}}>Delete</button>*/}
 				<br />
 				<br />
 			</div>
