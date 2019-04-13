@@ -16,7 +16,6 @@ class AccountsComp extends React.Component{
         const arr = this.state.accountsArray
         arr.deposit(id, balance)
         this.setState({accountsArray: arr})
-       
     } 
 
     withdrawController= (id, balance) => {
@@ -30,18 +29,12 @@ class AccountsComp extends React.Component{
         this.setState({view:"modify"})
     } 
 
-
     deleteController = (id) => {
-        console.log ("delete",id)
         this.setState({accountArray: this.state.accountsArray.removeAccount(id)})
-        console.log ("state array=", this.state.accountsArray)
-
     }
 
      handleAmmountChange = event => { 
         this.setState({newAmount: event.target.value})
-        console.log ("handle deposit func=",this.state.newAmount)
-        console.log (event.target.id)
     }
  
     showData = () => {
@@ -62,8 +55,13 @@ class AccountsComp extends React.Component{
                         </div>
                        
                         <div id="sides">
-                            <button id="addbtn" className="bn" onClick = {() => {this.modifyController(item.id, item.accName, item.accBalance)}}>Modify</button>
-                            <button id="addbtn" className="bn" onClick = {() => {this.deleteController(item.id)}}>Delete</button>
+                            <button id="addbtn" className="bn" onClick = {
+                                () => {this.modifyController(item.id, item.accName, item.accBalance)}
+                            }>Modify</button>
+
+                            <button id="addbtn" className="bn" onClick = {
+                                () => {this.deleteController(item.id)}
+                            }>Delete</button>
                         </div>
                     
                 </div>
@@ -91,7 +89,6 @@ class AccountsComp extends React.Component{
                                 +" - $"+ this.state.accountsArray.getLowestAccount().accBalance}
                 />
                 <br />
-                <br />
             </div>  
         )
     }
@@ -103,9 +100,7 @@ class AccountsComp extends React.Component{
     }
 
     submitOnClick = (name, balance) => {
-        console.log("from submit", name)
         if (name === undefined) {
-            console.log("empty")
         } else { 
             if (balance === undefined || balance === NaN){
                 this.addNewAccount (name, 0)
@@ -122,7 +117,7 @@ class AccountsComp extends React.Component{
         } else {
             return (
                 <div>
-                    <h4> Account Transactions</h4>
+                    <h4> {this.modifyObj[1]} Account Transactions</h4>
                 </div>
             )
         }
@@ -143,29 +138,27 @@ class AccountsComp extends React.Component{
         }
 
         return (
-                <div>
-                    <input  type = "text"
-                        placeholder ={inputPlaceHolderName}
-                        value = {this.name}
-                        onChange = {
-                            (event)=>{
-                                this.name = event.target.value
-                                console.log(this.name)
-                            }
+            <div>
+                <input  type = "text"
+                    placeholder ={inputPlaceHolderName}
+                    value = {this.name}
+                    onChange = {
+                        (event)=>{
+                            this.name = event.target.value
                         }
-                    />
-                    <input  type = "number"
-                        placeholder = {inputPlaceHolderBalance}
-                        value = {this.balance}
-                        onChange = {
-                            (event)=>{
-                                this.balance = event.target.value
-                                console.log(this.balance)
-                            }
+                    }
+                />
+                <input  type = "number"
+                    placeholder = {inputPlaceHolderBalance}
+                    value = {this.balance}
+                    onChange = {
+                        (event)=>{
+                            this.balance = event.target.value
                         }
-                     />
-                </div>
-            )
+                    }
+                />
+            </div>
+        )
     }
 
     displayButtons = (type) => {
@@ -178,14 +171,14 @@ class AccountsComp extends React.Component{
                             this.name=undefined
                             this.balance=undefined
                         }
-                    }>close</button>
+                    }>Submit</button>
                     <button id="addbtn" onClick= {
                         () => {
                             this.setState({view:""})
                             this.name=undefined
                             this.balance=undefined
                         }
-                    }>close</button>
+                    }>Cancel</button>
                 </div>
             )
 
@@ -215,13 +208,14 @@ class AccountsComp extends React.Component{
                             this.setState({view:""})
                         }
                     }>Withdrawl</button>
+
                     <button id="addbtn" onClick= {
                         () => {
                             this.setState({view:""})
                             this.name=undefined
                             this.balance=undefined
                         }
-                    }>Cancel</button>
+                    }>Close</button>
                 </div>
             )
         }
@@ -229,15 +223,10 @@ class AccountsComp extends React.Component{
 
     conditionalDisplay = (type) => {
         return(
-            <div>
-                <div>
-                    {this.displayTitle(type)}
-                    {this.displayInputs(type)}
-                    {this.displayButtons(type)}
-
-                </div>
-
-                
+            <div id = "leftSide">
+                {this.displayTitle(type)}
+                {this.displayInputs(type)}
+                {this.displayButtons(type)}
             </div>
         )
     }
