@@ -1,0 +1,22 @@
+[
+	{
+		"subject": "a",
+		"amount": 1
+	},
+	{
+		"subject": "b",
+		"amount": 2
+	},
+	{
+		"subject": "c",
+		"amount": 3
+	},
+	{
+		"subject": "d",
+		"amount": 4
+	},
+	{
+		"subject": "e",
+		"amount": 5
+	}
+]
