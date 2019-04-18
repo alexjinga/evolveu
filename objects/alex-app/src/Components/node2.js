@@ -33,6 +33,9 @@ class LinkedList2 {
 			newNode.prev = this.head
 			this.currentNode = newNode
 		} else {
+			if (this.currentNode === this.tail){
+				this.currentNode=this.currentNode.prev
+			}
 			newNode.next = this.currentNode.next
 			newNode.prev = this.currentNode
 			this.currentNode.next = newNode
