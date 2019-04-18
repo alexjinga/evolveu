@@ -42,8 +42,6 @@ class Comp150 extends React.Component {
 	}
 
 	showData = () =>{
-		// console.log("state array=",this.state.linkList.linkedListToArray())
-		// console.log("state Link list=", this.state.linkList)
         if (this.state.linkList === null){
             return(
                 <div>
