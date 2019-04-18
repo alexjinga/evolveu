@@ -1,22 +1,22 @@
 [
 	{
-		"subject": "a",
+		"subject": "node",
 		"amount": 1
 	},
 	{
-		"subject": "b",
+		"subject": "node",
 		"amount": 2
 	},
 	{
-		"subject": "c",
+		"subject": "node",
 		"amount": 3
 	},
 	{
-		"subject": "d",
+		"subject": "node",
 		"amount": 4
 	},
 	{
-		"subject": "e",
+		"subject": "node",
 		"amount": 5
 	}
 ]

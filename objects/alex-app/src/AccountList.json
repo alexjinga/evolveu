@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Moe",
+		"balance": "222"
+	},
+	{
+		"name": "Larry",
+		"balance": "334"
+	},
+	{
+		"name": "Curley",
+		"balance": "900"
+	},
+	{
+		"name": "Shemp",
+		"balance": "60"
+	},
+	{
+		"name": "Joe",
+		"balance": "2000"
+	}
+]

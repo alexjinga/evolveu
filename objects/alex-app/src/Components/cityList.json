@@ -1,0 +1,35 @@
+[
+	{
+		"name": "Quetzaltenango",
+		"latitude": "14.83472N",
+		"longitude": "-91.51806W",
+		"population": 145000
+	},
+		{
+		"name": "Calgary",
+		"latitude": "51.042421N",
+		"longitude": "-114.075664W",
+		"population": 1500000
+	},
+		{
+		"name": "Necochea",
+		"latitude": "-38.559091S",
+		"longitude": "-58.7420659W",
+		"population": 90000
+	},   {
+		"name": "Brisbane",
+		"latitude": "27.4635654S",
+		"longitude": "153.0282252E",
+		"population": 3500000
+	}, {
+		"name": "Luanda",
+		"latitude": "8.8176014S",
+		"longitude": "13.2468539E",
+		"population": 2487484
+	},	{
+		"name": "Medellin",
+		"latitude": "6.25184N",
+		"longitude": "-75.56359W",
+		"population": 3000000
+	}
+]

@@ -1,0 +1,55 @@
+#addbtn {
+    border-radius: 10px;
+    border-radius: 5px;
+    font: 12px arial ;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+}
+
+.flexIt {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.flexIt2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#endLine {
+	border-bottom-style: solid;
+	border-width: 1px;
+	border-color: gray;
+	padding-bottom: 5px
+}
+
+#leftSide {
+	/*width: 450px;*/
+	padding: 10px;
+	/*border: 1px dotted gray; */
+	margin: 5px;
+
+}
+
+#rightSide {
+	/*width: 450px;*/
+	padding: 1px;
+	/*border: 1px dotted gray; */
+	margin: 1px;
+}
+
+.accountCard {
+	/*padding: 5px;*/
+	border: 1px solid gray; 
+	margin: 5px;
+}
+
+#sides { 	 
+	/*width: 450px;*/
+	padding: 5px 5px 5px 0px;
+	/*border: 1px solid black*/; 
+	margin: 5px 5px 5px 0px;
+}

@@ -6,11 +6,15 @@ class Node {
 		this.amount = amount
 		this.next = null // next is Larry's forwardNode
 	}
+	show() {
+		const node = [0, this.subject, this.amount]
+		return node
+	}
 }
 
 class LinkedList {
 	constructor(){
-		this.head = null
+		this.head = new Node ("HEAD","")
 		this.numberOfNodes = 0
 		this.currentNode = this.head
 	}
@@ -21,8 +25,9 @@ class LinkedList {
 			this.head = newNode
 			this.currentNode = newNode
 		} else {
+			newNode.next = this.currentNode.next
 			this.currentNode.next = newNode
-			this.currentNode = this.currentNode.next
+			this.currentNode = newNode
 		}
 		this.numberOfNodes++
 		return this.currentNode
@@ -32,10 +37,11 @@ class LinkedList {
 		data.forEach((item) =>{
 			this.insert(item.subject, item.amount)
 		})
+		return (this.linkedListToArray())
 	}
 
 	first = () => {
-		this.currentNode = this.head
+		this.currentNode = this.head.next
 	}
 
 	last = () => {
@@ -58,7 +64,7 @@ class LinkedList {
 	previous= () => {
 		if (this.currentNode === this.head){
 			console.log ("you reached the Head of the List")
-			return null
+			return this.currentNode
 		} else {
 			let previousNode = this.head 
 			while (previousNode.next !== this.currentNode){
@@ -72,29 +78,43 @@ class LinkedList {
 		if (this.currentNode === this.head){
 			console.log ("sorry, you cannot delete the Head")
 			return null
+		// }else if (this.previous() === this.head){
+		// 	this.currentNode = this.head 
 		} else {
 			const deleteNode = this.currentNode 
 			this.previous()
 			this.currentNode.next = deleteNode.next
 			this.numberOfNodes--
 		}
+		// displayList()
 	}
 
-	displayList = () => {
-		const tempNode = this.head
-		console.log("the link list contains:")
-		console.log("HEAD")
-		while (tempNode.next!== null){
-			console.log(tempNode)
+	linkedListToArray = () => {
+		const linkedListArray = []
+		let tempNode = this.head
+		while (tempNode!== null){
+			if(tempNode===this.currentNode){
+				const a = tempNode.show()
+				a[0] = 1
+				linkedListArray.push(a)
+			} else {
+				linkedListArray.push(tempNode.show())		
+			}
 			tempNode = tempNode.next
 		}
+		linkedListArray.push([0, "NULL", ""])
+		// console.log(linkedListArray)
+		return (linkedListArray)
 	}
 	
 	total = () => { 
 		let tempNode = this.head
 		let sum = 0
 		do{
-			sum = tempNode.amount + sum
+			if (tempNode.amount === null){
+				tempNode.amount=0
+			}
+			sum = Number(tempNode.amount) + sum
 			tempNode = tempNode.next
 		} while (tempNode !== null)
 		console.log(sum)
