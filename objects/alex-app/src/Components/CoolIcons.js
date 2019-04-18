@@ -30,10 +30,11 @@ class CoolIcons extends React.Component{
 				<div className="bttn" onClick = {() => this.props.onClick("LL")}>
 					<img src={LL} className="App-logo2" alt = "LinkedList" />
 				</div>
-				{/*<div className="bttn" onClick = {() => this.props.onClick("FIFO")}>
+				<div className="bttn" onClick = {() => this.props.onClick("FIFO")}>
 					<img src={FIFO} className="App-logo2" alt="Calculator"/>
+					<img src={LIFO} className="App-logo2" alt="account" />
 				</div>
-				<div className="bttn" onClick = {() => this.props.onClick("LIFO")}>
+				{/*<div className="bttn" onClick = {() => this.props.onClick("LIFO")}>
 					<img src={LIFO} className="App-logo2" alt="account" />
 				</div>*/}
 			</div>

@@ -1,12 +1,12 @@
-//Single linked list
-
+//double linked list
 import data from './LinkedListElements.json'
 
-class Node {
+class Node2 {
 	constructor(subject, amount){
 		this.subject = subject
 		this.amount = amount
 		this.next = null // next is Larry's forwardNode
+		this.prev = null
 	}
 	show() {
 		const node = [0, this.subject, this.amount]
@@ -14,21 +14,30 @@ class Node {
 	}
 }
 
-class LinkedList {
+class LinkedList2 {
 	constructor(){
-		this.head = new Node ("HEAD","")
+		this.head = new Node2 ("HEAD","")
+		this.tail = new Node2 ("TAIL", "")
 		this.numberOfNodes = 0
 		this.currentNode = this.head
+		// this.head.next = this.tail
+		// this.tail.prev = this.head
 	}
 
 	insert = (subject, amount) => {
-		const newNode = new Node(subject,amount)
-		if (this.head === null) {
-			this.head = newNode
+		const newNode = new Node2(subject,amount)
+		if (this.head.next === null) {
+			this.head.next = newNode
+			this.tail.prev = newNode
+			newNode.next = this.tail
+			newNode.prev = this.head
 			this.currentNode = newNode
 		} else {
 			newNode.next = this.currentNode.next
+			newNode.prev = this.currentNode
 			this.currentNode.next = newNode
+			this.currentNode = this.currentNode.next.next
+			this.currentNode.prev = newNode
 			this.currentNode = newNode
 		}
 		this.numberOfNodes++
@@ -43,52 +52,44 @@ class LinkedList {
 	}
 
 	first = () => {
-		this.currentNode = this.head
+		this.currentNode = this.head.next
 	}
 
 	last = () => {
-		while (this.currentNode.next!== null){
-			// console.log(tempNode)
-			this.currentNode = this.currentNode.next
-		}
+		this.currentNode = this.tail.prev
 	}
 
 	next = () => {
 		if (this.currentNode.next === null) {
 			console.log("we reached the end of the queue")
-			// return this.curentNode
 			return null
 		} else {
 			this.currentNode = this.currentNode.next
 		}
 	}
 
-	previous= () => {
-		if (this.currentNode === this.head){
+	previous = () => {
+		if (this.currentNode.prev === null){
 			console.log ("you reached the Head of the List")
 			return this.currentNode
 		} else {
-			let previousNode = this.head 
-			while (previousNode.next !== this.currentNode){
-				previousNode = previousNode.next
-			}
-			this.currentNode = previousNode
+			this.currentNode = this.currentNode.prev
 		}
 	}
 
-	delete = () =>{
-		if (this.currentNode === this.head){
-			console.log ("sorry, you cannot delete the Head")
-			return null
-		// }else if (this.previous() === this.head){
-		// 	this.currentNode = this.head 
+	delete = () => {
+		if (this.currentNode.next === null || this.currentNode.prev===null){
+			console.log ("sorry, you cannot delete the Head or the Tail")
+			return null		
 		} else {
 			const deleteNode = this.currentNode 
-			this.previous()
-			this.currentNode.next = deleteNode.next
+			let beforeNode = this.currentNode.prev
+			let afterNode = this.currentNode.next
+			beforeNode.next = afterNode
+			afterNode.prev = beforeNode
+			this.currentNode = beforeNode
 			this.numberOfNodes--
 		}
-		// displayList()
 	}
 
 	linkedListToArray = () => {
@@ -123,4 +124,4 @@ class LinkedList {
 		return sum
 	}
 }
-export {Node, LinkedList}
+export {Node2, LinkedList2}
