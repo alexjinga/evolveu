@@ -31,8 +31,7 @@ class CoolIcons extends React.Component{
 					<img src={LL} className="App-logo2" alt = "LinkedList" />
 				</div>
 				<div className="bttn" onClick = {() => this.props.onClick("FIFO")}>
-					<img src={FIFO} className="App-logo2" alt="Calculator"/>
-					<img src={LIFO} className="App-logo2" alt="account" />
+					<img src={LIFO} className="App-logo2" alt="Queue&Stack" />
 				</div>
 				{/*<div className="bttn" onClick = {() => this.props.onClick("LIFO")}>
 					<img src={LIFO} className="App-logo2" alt="account" />

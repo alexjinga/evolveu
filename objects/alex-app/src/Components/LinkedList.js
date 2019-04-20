@@ -45,7 +45,7 @@ class Comp150 extends React.Component {
         if (this.state.linkList === null){
             return(
                 <div>
-                    <h6> Please chose one of the 2 linked list types</h6>
+                    <h5> Please chose one of the 2 linked list types</h5>
                 </div>
             )
         } else {

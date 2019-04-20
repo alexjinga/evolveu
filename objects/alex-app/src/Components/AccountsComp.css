@@ -28,7 +28,7 @@
 
 #leftSide {
 	/*width: 450px;*/
-	padding: 10px;
+	padding: 5px;
 	/*border: 1px dotted gray; */
 	margin: 5px;
 
@@ -36,9 +36,9 @@
 
 #rightSide {
 	/*width: 450px;*/
-	padding: 1px;
+	padding: 5px;
 	/*border: 1px dotted gray; */
-	margin: 1px;
+	margin: 5px;
 }
 
 .accountCard {
