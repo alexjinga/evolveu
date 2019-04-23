@@ -46,7 +46,7 @@ test ('Node class from Node.js', () => {
 	//testing first() method
 	console.log ("testing first() method:")
 	newList.first()
-	expect(newList.currentNode).toMatchObject(newList.head.next)
+	expect(newList.currentNode).toMatchObject(newList.head)
 
 	//testing last() method
 	console.log ("testing last() method:")
@@ -60,39 +60,46 @@ test ('Node class from Node.js', () => {
 	console.log("current Node location 1:",newList.currentNode)
 	newList.next()
 	console.log("current Node location 2:",newList.currentNode)
-	expect(newList.currentNode).toMatchObject(newList.head.next.next)
+	expect(newList.currentNode).toMatchObject(newList.head.next)
 	newList.next()
 	console.log("current Node location 3:",newList.currentNode)
-	expect(newList.currentNode).toMatchObject(newList.head.next.next.next)
+	expect(newList.currentNode).toMatchObject(newList.head.next.next)
 
 	//test previous() method 
 	console.log ("testing previous() method:")
 	newList.previous()
 	console.log("current Node loc -1 ", newList.currentNode)
-	expect(newList.currentNode).toMatchObject(newList.head.next.next) 
+	expect(newList.currentNode).toMatchObject(newList.head.next) 
 	newList.previous()
 	console.log("current Node loc -2 ", newList.currentNode)
-	expect(newList.currentNode).toMatchObject(newList.head.next) 
+	expect(newList.currentNode).toMatchObject(newList.head) 
 
 	//test delete() method
 	console.log ("testing delete() method:")
 	newList.next()
 	newList.next()
-	expect(newList.currentNode).toMatchObject(newList.head.next.next.next)
+	expect(newList.currentNode).toMatchObject(newList.head.next.next)
 	console.log("current Node to delete ", newList.currentNode)
 	newList.delete()
-	expect(newList.currentNode).toMatchObject(newList.head.next.next)
+	expect(newList.currentNode).toMatchObject(newList.head.next)
 
 	//test Total() method 
 	console.log ("testing total() method:")
 	console.log(newList.total())
-	expect(newList.total()).toBe(15)
+	expect(newList.total()).toBe(16)
 
 	//test linkedListToArray() method
 	console.log ("testing display() method:")
 	const newList2 = new LinkedList()
 	newList2.importList(data)
-	expect(newList2.linkedListToArray()).toMatchObject([[0,"HEAD",""], [0, "node", 1], [0, "node", 2], [0, "node", 3], [0, "node", 4], [1, "node", 5],[0,"NULL",""]])
+	expect(newList2.linkedListToArray()).toMatchObject([
+											[0,"HEAD",""], 
+											[0, "node", 1], 
+											[0, "node", 2], 
+											[0, "node", 3], 
+											[0, "node", 4], 
+											[1, "node", 5],
+										])
 	newList2.previous()
 	newList2.linkedListToArray()
 

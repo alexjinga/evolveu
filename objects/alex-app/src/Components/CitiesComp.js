@@ -28,7 +28,7 @@ class CityDisplay extends React.Component {
          
          this.setState({ population : this.state.population+howMany})
          //this.setState({ howBig : this.thisCity.howBig(this.state.population+howMany)})
-         console.log ("from child",this.state.population)
+         // console.log ("from child",this.state.population)
          let a = new City ("a",0,0,0)
          this.setState({ howBig : a.howBig(this.props.population-howMany)})
          return howMany
@@ -42,7 +42,7 @@ class CityDisplay extends React.Component {
          let a = new City ("a",0,0,0)
          //console.log(a.howBig(this.props.population-howMany))
          this.setState({ howBig : a.howBig(this.props.population-howMany)})
-         console.log ("from child",this.state.population)
+         // console.log ("from child",this.state.population)
          return howMany
     }
 
@@ -112,7 +112,7 @@ class CommunityController extends React.Component {
     
    moveIn = (item,pop) => {
   		let arrIndex = 0
-        console.log("from parent",item,pop)
+        // console.log("from parent",item,pop)
         const arr = this.state.arrayData
         arr.forEach((element) => {
         	arrIndex++
@@ -138,7 +138,7 @@ class CommunityController extends React.Component {
 
 moveOut = (item,pop) => {
   		let arrIndex = 0
-        console.log("from parent",item,pop)
+        // console.log("from parent",item,pop)
         const arr = this.state.arrayData
         arr.forEach((element) => {
         	arrIndex++

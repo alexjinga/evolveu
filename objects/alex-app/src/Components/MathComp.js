@@ -15,13 +15,13 @@ class MathComp extends React.Component {
 	
 	handleChangeBox1 = event => {
 		this.setState({ box1ValueState: event.target.value})
-		console.log (this.state.box1ValueState)
+		// console.log (this.state.box1ValueState)
 	};
 
 
 	handleChangeBox2 = event => {
 		this.setState({ box2ValueState: event.target.value})
-		console.log (this.state.box2ValueState)
+		// console.log (this.state.box2ValueState)
 	}
 
 

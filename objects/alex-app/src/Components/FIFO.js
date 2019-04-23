@@ -13,8 +13,8 @@ class FIFO extends React.Component {
            	stack: new Lif (["item 1", "item 2", "item 3", "item 4", "item 5"]),
         	stackCount: 5,
         }
-        console.log ("q=",this.state.queue)
-        console.log ("s=",this.state.stack)
+        // console.log ("q=",this.state.queue)
+        // console.log ("s=",this.state.stack)
     }
        
     makeElement = (item) => {
@@ -89,8 +89,8 @@ class FIFO extends React.Component {
                           	const arr = this.state.queue
                           	let index = this.state.queueCount
                           	index++
-                          	console.log ("index", index)
-                          	console.log("arr=",arr)
+                          	// console.log ("index", index)
+                          	// console.log("arr=",arr)
                            	arr.addToQueue("item "+ index)
                            	this.setState({queue: arr})
                            	this.setState({queueCount: index})

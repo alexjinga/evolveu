@@ -64,7 +64,7 @@ class LinkedList2 {
 
 	next = () => {
 		if (this.currentNode.next === null) {
-			console.log("we reached the end of the queue")
+			// console.log("we reached the end of the queue")
 			return null
 		} else {
 			this.currentNode = this.currentNode.next
@@ -73,7 +73,7 @@ class LinkedList2 {
 
 	previous = () => {
 		if (this.currentNode.prev === null){
-			console.log ("you reached the Head of the List")
+			// console.log ("you reached the Head of the List")
 			return this.currentNode
 		} else {
 			this.currentNode = this.currentNode.prev
@@ -82,7 +82,7 @@ class LinkedList2 {
 
 	delete = () => {
 		if (this.currentNode.next === null || this.currentNode.prev===null){
-			console.log ("sorry, you cannot delete the Head or the Tail")
+			// console.log ("sorry, you cannot delete the Head or the Tail")
 			return null		
 		} else {
 			const deleteNode = this.currentNode 
@@ -123,7 +123,7 @@ class LinkedList2 {
 			sum = Number(tempNode.amount) + sum
 			tempNode = tempNode.next
 		} while (tempNode !== null)
-		console.log(sum)
+		// console.log(sum)
 		return sum
 	}
 }

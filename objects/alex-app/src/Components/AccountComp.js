@@ -28,7 +28,7 @@ class AcountComp extends React.Component {
 	handleDeposit = event => { 
 		this.setState({newAmount: event.target.value})
 
-		console.log ("handle deposit func=",this.state.newAmount)
+		// console.log ("handle deposit func=",this.state.newAmount)
 	};
 
 
