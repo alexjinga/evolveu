@@ -142,6 +142,9 @@ class FIFO extends React.Component {
                 <div className="accountCard">
                     <h4>Working with Queue and Stack </h4>
                 </div>
+                 <div>
+                  <i class="fab fa-accessible-icon"></i>
+                </div>
                 <div className = "flexIt2" >
                     <div id = "leftSide" >
                     	<h5> Queue (FIFO) </h5>

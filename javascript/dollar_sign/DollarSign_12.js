@@ -65,3 +65,18 @@ processPeople(people, function(item) {
 			console.log(item)
 		}
 })
+
+let determineTotal = function() {
+	let totalAge = 0
+	let counter = 0
+	processPeople(people, function(item) {
+			totalAge = totalAge + item.age
+			counter ++
+	})
+	console.log ("total number of people:",counter)
+	console.log ("total age:", totalAge)
+	console.log ("average Age", totalAge/counter)
+};
+//
+determineTotal();
+
