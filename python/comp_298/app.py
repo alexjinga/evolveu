@@ -10,7 +10,7 @@ from flask_migrate import Migrate
 #     host = "localhost",
 #     database = "comp298_DB",
 #     user = "postgres",
-#     password = "Unab1e2f1y",
+#     password = "",
 #     port = "5432"
 # )
 
