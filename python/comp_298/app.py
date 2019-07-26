@@ -1,8 +1,26 @@
 import os
+import psycopg2
 from forms import AddForm, DelForm, OwnerForm
 from flask import Flask, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+# #Connect to the DB
+# con = psycopg2.connect(
+#     host = "localhost",
+#     database = "comp298_DB",
+#     user = "postgres",
+#     password = "Unab1e2f1y",
+#     port = "5432"
+# )
+
+# #cursor 
+# cur = con.cursor()
+
+# cur.execure("select * from client")
+# rows - cur.fetchall()
+#     for r in rows:
+#         print(f"id {r[0]} name {r[1]}")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mykey'
@@ -99,6 +117,10 @@ def add_owner():
         db.session.commit()
         return redirect(url_for('list_pup'))
     return render_template('owners.html', form=form)
+
+#close connection
+# con.close()
+
 
 if __name__ == '__main__':
     app.run(debug=True)
